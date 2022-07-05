@@ -126,7 +126,7 @@ public class UserController {
     @PostMapping("/findPw")
     public String findPWForm(String email, Model model) throws Exception {
         log.info("전달받은 이메일 : " + email);
-        if(tempUserSerivce.emailcheck(email)==1){ //이메일 확인
+        if(tempUserSerivce.emailcheck(email)!=0){ //이메일 확인
             model.addAttribute("msg","인증메일을 보냈습니다. 메일을 확인해 주세요");
             emailSend.sendEmail(email);
         }else{
